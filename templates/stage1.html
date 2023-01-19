@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <body>
+  {% extends 'get_input.html' %}
+
+  {% block body %}
+
+    <br>
+    <br>
+  <table style="border: solid black; width: 100%; width: 50%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-succesful" role="alert">
+        <h4  style="text-align: center;font-family:Arial Black;font-size:larger;">Recommendation Predicted</h4>
+    </div>
+
+    <tr style="color:rgb(0, 0, 0);">
+        <th style="font-size:larger; text-align: center;">Recommended Product For User</th>
+    </tr>
+
+        {% for item in buy_list %}
+        <tr style="border: solid black;">
+        <td style="background-color: greenyellow;">
+            <p style="font-family: Arial Black;padding-top:10px;text-align:center;"> {{ item }}</p>
+        </td>
+        </tr>
+        {% endfor %}
+
+        <br>
+  </table>
+
+
+
+  <div style="padding: 50px; padding-left: 200px; padding-right: 200px;">
+    <form action="{{url_for('buy_product_web')}}" method="post">
+        <div class="form-group" >
+          <label for="product">Enter Product You Want To Buy</label>
+          <input type="text" name="product" class="form-control" id="product" aria-describedby="emailHelp">
+          <small id="productHelp" class="form-text text-muted">Only Enter One Product</small>
+        </div>
+        <div class="form-group" >
+            <label for="Review">Enter Product Review</label>
+            <input type="text" name="review" class="form-control" id="review" aria-describedby="emailHelp">
+            <small id="reviewHelp" class="form-text text-muted">Give a Genuine Review</small>
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    {% endblock  %}
+  </body>
+</html>
